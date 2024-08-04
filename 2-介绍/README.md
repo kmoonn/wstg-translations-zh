@@ -1,6 +1,6 @@
-# Introduction
+# 介绍
 
-## The OWASP Testing Project
+## OWASP 测试项目
 
 The OWASP Testing Project has been in development for many years. The aim of the project is to help people understand the *what*, *why*, *when*, *where*, and *how* of testing web applications. The project has delivered a complete testing framework, not merely a simple checklist or prescription of issues that should be addressed. Readers can use this framework as a template to build their own testing programs or to qualify other people’s processes. The Testing Guide describes in detail both the general testing framework and the techniques required to implement the framework in practice.
 
@@ -255,7 +255,7 @@ Examples of issues that are particularly conducive to being found through source
 
 For more on code review, see the [OWASP code review project](https://owasp.org/www-project-code-review-guide).
 
-## Penetration Testing
+## 渗透测试
 
 ### Overview
 
