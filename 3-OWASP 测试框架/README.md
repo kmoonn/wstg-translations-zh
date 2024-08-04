@@ -14,4 +14,4 @@
 
 3.7 [A Typical SDLC Testing Workflow](0-Web 安全测试框架.md#a-typical-sdlc-testing-workflow)
 
-3.8 [Penetration Testing Methodologies](1-Penetration_Testing_Methodologies.md)
+3.8 [渗透测试方法](1-渗透测试方法.md)
