@@ -1,13 +1,13 @@
-# Appendix
+# 附录
 
-Appendix A. [Testing Tools Resource](A-Testing_Tools_Resource.md)
+附录 A. [测试工具资源](A-测试工具资源.md)
 
-Appendix B. [Suggested Reading](B-Suggested_Reading.md)
+附录 B. [推荐阅读](B-推荐阅读.md)
 
-Appendix C. [Fuzzing](C-Fuzzing.md)
+附录 C. [模糊测试](C-模糊测试.md)
 
-Appendix D. [Encoded Injection](D-Encoded_Injection.md)
+附录 D. [编码注入](D-编码注入.md)
 
-Appendix E. [History](E-History.md)
+附录 E. [项目历史](E-项目历史.md)
 
-Appendix F. [Leveraging Dev Tools](F-Leveraging_Dev_Tools.md)
+附录 F. [开发工具](F-开发工具.md)
