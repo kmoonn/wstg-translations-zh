@@ -1,27 +1,27 @@
 # Web 应用程序安全测试
 
-4.0 [Introduction and Objectives](00-Introduction_and_Objectives/README.md)
+4.0 [引言与目标](00-引言与目标/README.md)
 
-4.1 [Information Gathering](01-Information_Gathering/README.md)
+4.1 [信息收集](01-Information_Gathering/README.md)
 
-4.2 [Configuration and Deployment Management Testing](02-Configuration_and_Deployment_Management_Testing/README.md)
+4.2 [配置及部署管理信息](02-配置及部署管理信息/README.md)
 
-4.3 [Identity Management Testing](03-Identity_Management_Testing/README.md)
+4.3 [身份管理](03-身份管理/README.md)
 
-4.4 [Authentication Testing](04-Authentication_Testing/README.md)
+4.4 [身份验证](04-身份验证/README.md)
 
-4.5 [Authorization Testing](05-Authorization_Testing/README.md)
+4.5 [用户授权](05-用户授权/README.md)
 
-4.6 [Session Management Testing](06-Session_Management_Testing/README.md)
+4.6 [会话管理](06-会话管理/README.md)
 
-4.7 [Input Validation Testing](07-Input_Validation_Testing/README.md)
+4.7 [输入校验](07-输入校验/README.md)
 
-4.8 [Testing for Error Handling](08-Testing_for_Error_Handling/README.md)
+4.8 [异常处理](08-异常处理/README.md)
 
-4.9 [Testing for Weak Cryptography](09-Testing_for_Weak_Cryptography/README.md)
+4.9 [弱口令](09-弱口令/README.md)
 
-4.10 [Business Logic Testing](10-Business_Logic_Testing/README.md)
+4.10 [业务逻辑](10-业务逻辑/README.md)
 
-4.11 [Client-side Testing](11-Client-side_Testing/README.md)
+4.11 [客户端](11-客户端/README.md)
 
-4.12 [API Testing](12-API_Testing/README.md)
+4.12 [API](12-API/README.md)
