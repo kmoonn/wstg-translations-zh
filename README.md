@@ -75,33 +75,33 @@
 
 #### 4.1.10 [绘制应用程序架构](4-Web 应用程序安全测试/01-信息收集/10-绘制应用程序架构.md)
 
-### 4.2 [配置及部署管理信息测试](4-Web 应用程序安全测试/02-配置及部署管理测试/README.md)
+### 4.2 [配置及部署管理信息测试](4-Web 应用程序安全测试/02-配置及部署管理信息测试/README.md)
 
-#### 4.2.1 [测试网络基础设施配置](4-Web 应用程序安全测试/02-配置及部署管理测试/01-测试网络基础设施配置.md)
+#### 4.2.1 [测试网络基础设施配置](4-Web 应用程序安全测试/02-配置及部署管理信息测试/01-测试网络基础设施配置.md)
 
-#### 4.2.2 [测试应用程序平台配置](4-Web 应用程序安全测试/02-配置及部署管理测试/02-测试应用程序平台配置.md)
+#### 4.2.2 [测试应用程序平台配置](4-Web 应用程序安全测试/02-配置及部署管理信息测试/02-测试应用程序平台配置.md)
 
-#### 4.2.3 [测试敏感信息的文件扩展名处理方式](4-Web 应用程序安全测试/02-配置及部署管理测试/03-测试敏感信息的文件扩展名处理方式.md)
+#### 4.2.3 [测试敏感信息的文件扩展名处理方式](4-Web 应用程序安全测试/02-配置及部署管理信息测试/03-测试敏感信息的文件扩展名处理方式.md)
 
-#### 4.2.4 [审查旧备份和未引用文件](4-Web 应用程序安全测试/02-配置及部署管理测试/04-审查旧备份和未引用文件.md)
+#### 4.2.4 [审查旧备份和未引用文件](4-Web 应用程序安全测试/02-配置及部署管理信息测试/04-审查旧备份和未引用文件.md)
 
-#### 4.2.5 [列举基础设施和应用程序管理接口](4-Web 应用程序安全测试/02-配置及部署管理测试/05-列举基础设施和应用程序管理接口.md)
+#### 4.2.5 [列举基础设施和应用程序管理接口](4-Web 应用程序安全测试/02-配置及部署管理信息测试/05-列举基础设施和应用程序管理接口.md)
 
-#### 4.2.6 [测试 HTTP 方法](4-Web 应用程序安全测试/02-配置及部署管理测试/06-测试 HTTP 方法.md)
+#### 4.2.6 [测试 HTTP 方法](4-Web 应用程序安全测试/02-配置及部署管理信息测试/06-测试 HTTP 方法.md)
 
-#### 4.2.7 [测试 HTTP 严格传输安全性](4-Web 应用程序安全测试/02-配置及部署管理测试/07-测试 HTTP 严格传输安全性.md)
+#### 4.2.7 [测试 HTTP 严格传输安全性](4-Web 应用程序安全测试/02-配置及部署管理信息测试/07-测试 HTTP 严格传输安全性.md)
 
-#### 4.2.8 [Test RIA Cross Domain Policy](4-Web 应用程序安全测试/02-配置及部署管理测试/08-Test_RIA_Cross_Domain_Policy.md)
+#### 4.2.8 [Test RIA Cross Domain Policy](4-Web 应用程序安全测试/02-配置及部署管理信息测试/08-Test_RIA_Cross_Domain_Policy.md)
 
-#### 4.2.9 [Test File Permission](4-Web 应用程序安全测试/02-配置及部署管理测试/09-Test_File_Permission.md)
+#### 4.2.9 [Test File Permission](4-Web 应用程序安全测试/02-配置及部署管理信息测试/09-Test_File_Permission.md)
 
-#### 4.2.10 [Test for Subdomain Takeover](4-Web 应用程序安全测试/02-配置及部署管理测试/10-Test_for_Subdomain_Takeover.md)
+#### 4.2.10 [Test for Subdomain Takeover](4-Web 应用程序安全测试/02-配置及部署管理信息测试/10-Test_for_Subdomain_Takeover.md)
 
-#### 4.2.11 [Test Cloud Storage](4-Web 应用程序安全测试/02-配置及部署管理测试/11-Test_Cloud_Storage.md)
+#### 4.2.11 [Test Cloud Storage](4-Web 应用程序安全测试/02-配置及部署管理信息测试/11-Test_Cloud_Storage.md)
 
-#### 4.2.12 [Test for Content Security Policy](4-Web 应用程序安全测试/02-配置及部署管理测试/12-Test_for_Content_Security_Policy.md)
+#### 4.2.12 [Test for Content Security Policy](4-Web 应用程序安全测试/02-配置及部署管理信息测试/12-Test_for_Content_Security_Policy.md)
 
-#### 4.2.13 [Test for Path Confusion](4-Web 应用程序安全测试/02-配置及部署管理测试/13-Test_for_Path_Confusion.md)
+#### 4.2.13 [Test for Path Confusion](4-Web 应用程序安全测试/02-配置及部署管理信息测试/13-Test_for_Path_Confusion.md)
 
 ### 4.3 [身份管理测试](4-Web 应用程序安全测试/03-身份管理测试/README.md)
 
