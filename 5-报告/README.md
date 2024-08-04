@@ -1,5 +1,5 @@
-# Reporting
+# 报告
 
-5.1 [Reporting Structure](01-Reporting_Structure.md)
+5.1 [报告结构](01-报告结构.md)
 
-5.2 [Naming Schemes](02-Naming_Schemes.md)
+5.2 [命名规则](02-命名规则.md)
