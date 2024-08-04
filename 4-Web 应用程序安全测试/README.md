@@ -2,7 +2,7 @@
 
 4.0 [引言与目标](00-引言与目标/README.md)
 
-4.1 [信息收集](01-Information_Gathering/README.md)
+4.1 [信息收集](01-信息收集/README.md)
 
 4.2 [配置及部署管理信息](02-配置及部署管理信息/README.md)
 
