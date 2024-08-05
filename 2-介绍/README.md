@@ -10,7 +10,7 @@ However, the group is very satisfied with the results of the project. Many indus
 
 The rest of this guide is organized as follows: this introduction covers the pre-requisites of testing web applications and the scope of testing. It also covers the principles of successful testing and testing techniques, best practices for reporting, and business cases for security testing. Chapter 3 presents the OWASP Testing Framework and explains its techniques and tasks in relation to the various phases of the software development lifecycle. Chapter 4 covers how to test for specific vulnerabilities (e.g., SQL Injection) by code inspection and penetration testing.
 
-### Measuring Security: the Economics of Insecure Software
+### 安全性衡量：不安全软件的经济学原理
 
 A basic tenet of software engineering is summed up in a quote from [Controlling Software Projects: Management, Measurement, and Estimates](https://isbnsearch.org/isbn/9780131717114) by [Tom DeMarco](https://en.wikiquote.org/wiki/Tom_DeMarco):
 
@@ -26,7 +26,7 @@ While estimating the cost of insecure software may appear a daunting task, there
 
 The framework described in this document encourages people to measure security throughout the entire development process. They can then relate the cost of insecure software to the impact it has on the business, and consequently develop appropriate business processes, and assign resources to manage the risk. Remember that measuring and testing web applications is even more critical than for other software, since web applications are exposed to millions of users through the internet.
 
-### What is Testing?
+### 什么是测试?
 
 Many things need to be tested during the development lifecycle of a web application, but what does testing actually mean? The Oxford Dictionary of English defines "test" as:
 
@@ -79,7 +79,7 @@ Linking to Web Security Testing Guide scenarios should be done using versioned l
 
 As with all OWASP projects, we welcome comments and feedback. We especially like to know that our work is being used and that it is effective and accurate.
 
-## Principles of Testing
+## 测试原理
 
 There are some common misconceptions when developing a testing methodology to find security bugs in software. This chapter covers some of the basic principles that professionals should take into account when performing security tests on software.
 
@@ -160,7 +160,7 @@ To conclude the testing process, it is important to produce a formal record of w
 
 The report should clearly identify to the business owner where material risks exist, and do so in a manner sufficient to get their backing for subsequent mitigation actions. The report should also be clear to the developer in pin-pointing the exact function that is affected by the vulnerability and associated recommendations for resolving issues in a language that the developer will understand. The report should also allow another security tester to reproduce the results. Writing the report should not be overly burdensome on the security tester themselves. Security testers are not generally renowned for their creative writing skills, and agreeing on a complex report can lead to instances where test results are not properly documented. Using a security test report template can save time and ensure that results are documented accurately and consistently, and are in a format that is suitable for the audience.
 
-## Testing Techniques Explained
+## 测试技术说明
 
 This section presents a high-level overview of various testing techniques that can be employed when building a testing program. It does not present specific methodologies for these techniques, as this information is covered in Chapter 3. This section is included to provide context for the framework presented in the next chapter and to highlight the advantages or disadvantages of some of the techniques that should be considered. In particular, we will cover:
 
@@ -169,7 +169,7 @@ This section presents a high-level overview of various testing techniques that c
 - Code Review
 - Penetration Testing
 
-## Manual Inspections and Reviews
+## 人工检查与审核
 
 ### Overview
 
@@ -195,7 +195,7 @@ Other activities, including manually reviewing the documentation, secure coding 
 - Supporting material not always available
 - Requires significant human thought and skill to be effective
 
-## Threat Modeling
+## 威胁模型
 
 ### Overview
 
@@ -230,7 +230,7 @@ be flexible and select the tools and processes that will fit with how a particul
 
 - Good threat models don’t automatically mean good software
 
-## Source Code Review
+## 源代码审查
 
 ### Overview
 
@@ -276,7 +276,7 @@ Many people use web application penetration testing as their primary security te
 - Too late in the SDLC
 - Front-impact testing only
 
-## The Need for a Balanced Approach
+## 采取均衡方法的必要性
 
 With so many techniques and approaches to testing the security of web applications, it can be difficult to understand which techniques to use or when to use them. Experience shows that there is no right or wrong answer to the question of exactly which techniques should be used to build a testing framework. In fact, all techniques should be used to test all the areas that need to be tested.
 
@@ -339,7 +339,7 @@ As the scheme is explained the inadequacies can be worked out. Anyone that figur
 
 Many organizations have started to use static source code scanners. While they undoubtedly have a place in a comprehensive testing program, it is necessary to highlight some fundamental issues about why this approach is not effective when used alone. Static source code analysis alone cannot identify issues due to flaws in the design, since it cannot understand the context in which the code is constructed. Source code analysis tools are useful in determining security issues due to coding errors, however significant manual effort is required to validate the findings.
 
-## Deriving Security Test Requirements
+## 安全测试的要求
 
 To have a successful testing program, one must know what the testing objectives are. These objectives are specified by the security requirements. This section discusses in detail how to document requirements for security testing by deriving them from applicable standards and regulations, from positive application requirements (specifying what the application is supposed to do), and from negative application requirements (specifying what the application should not do). It also discusses how security requirements effectively drive security testing during the SDLC and how security test data can be used to effectively manage software security risks.
 
@@ -453,7 +453,7 @@ In this case, the following security requirements for authentication are derived
 
 These security requirements need to be documented and tested.
 
-## Security Tests Integrated in Development and Testing Workflows
+## 集成安全测试
 
 ### Security Testing in the Development Workflow
 
@@ -520,7 +520,7 @@ A more in-depth security test might require the tester’s knowledge of speciali
 
 The next level of security testing after integration system tests is to perform security tests in the user acceptance environment. There are unique advantages to performing security tests in the operational environment. The user acceptance test (UAT) environment is the one that is most representative of the release configuration, with the exception of the data (e.g., test data is used in place of real data). A characteristic of security testing in UAT is testing for security configuration issues. In some cases these vulnerabilities might represent high risks. For example, the server that hosts the web application might not be configured with minimum privileges, valid HTTPS certificate and secure configuration, essential services disabled, and web root directory cleaned of test and administration web pages.
 
-## Security Test Data Analysis and Reporting
+## 安全测试分析及报告
 
 ### Goals for Security Test Metrics and Measurements
 
@@ -607,6 +607,6 @@ To compliance auditors, security test metrics provide a level of software securi
 
 Finally, Chief Information Officers (CIOs), and Chief Information Security Officers (CISOs), who are responsible for the budget that needs to be allocated in security resources, look for derivation of a cost-benefit analysis from security test data. This allows them to make informed decisions about which security activities and tools to invest in. One of the metrics that supports such analysis is the Return On Investment (ROI) in security. To derive such metrics from security test data, it is important to quantify the differential between the risk, due to the exposure of vulnerabilities, and the effectiveness of the security tests in mitigating the security risk, then factor this gap with the cost of the security testing activity or the testing tools adopted.
 
-## References
+## 参考资料
 
 - US National Institute of Standards (NIST) 2002 [survey on the cost of insecure software to the US economy due to inadequate software testing](https://www.nist.gov/director/planning/upload/report02-3.pdf)

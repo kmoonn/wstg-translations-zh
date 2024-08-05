@@ -1,4 +1,4 @@
-# 4.0 Introduction and Objectives
+# 4.0 引言与目标
 
 This section describes the OWASP web application security testing methodology and explains how to test for evidence of vulnerabilities within the application due to deficiencies with identified security controls.
 

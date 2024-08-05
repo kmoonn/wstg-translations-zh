@@ -1,4 +1,4 @@
-# Foreword by Eoin Keary
+# 前言（Eoin Keary）
 
 The problem of insecure software is perhaps the most important technical challenge of our time. The dramatic rise of web applications enabling business, social networking etc has only compounded the requirements to establish a robust approach to writing and securing our Internet, Web Applications and Data.
 
@@ -10,7 +10,7 @@ Security testing, by itself, isn't a particularly good stand alone measure of ho
 
 In conjunction with other OWASP projects such as the Code Review Guide, the Development Guide and tools such as [ZAP](https://www.zaproxy.org/), this is a great start towards building and maintaining secure applications. This Testing Guide will show you how to verify the security of your running application. I highly recommend using these guides as part of your application security initiatives.
 
-## Why OWASP?
+## 为什么 OWASP?
 
 Creating a guide like this is a huge undertaking, requiring the expertise of hundreds of people around the world. There are many different ways to test for security flaws and this guide captures the consensus of the leading experts on how to perform this testing quickly, accurately, and efficiently. OWASP gives like minded security folks the ability to work together and form a leading practice approach to a security problem.
 
@@ -22,7 +22,7 @@ Keeping this information up to date is a critical aspect of this guide project. 
 
 This Guide is a great testament to the passion and energy our members and project volunteers have for this subject. It shall certainly help to change the world a line of code at a time.
 
-## Tailoring and Prioritizing
+## 量身定制和优先次序
 
 You should adopt this guide in your organization. You may need to tailor the information to match your organization's technologies, processes, and organizational structure.
 
@@ -37,7 +37,7 @@ The most important thing to remember when performing security testing is to cont
 
 This guide is best viewed as a set of techniques that you can use to find different types of security holes. But not all the techniques are equally important. Try to avoid using the guide as a checklist, new vulnerabilities are always manifesting and no guide can be an exhaustive list of "things to test for", but rather a great place to start.
 
-## The Role of Automated Tools
+## 自动化工具的作用
 
 There are a number of companies selling automated security analysis and testing tools. Remember the limitations of these tools so that you can use them for what they're good at. As Michael Howard put it at the 2006 OWASP AppSec Conference in Seattle, "Tools do not make software secure! They help scale the process and help enforce policy."
 
@@ -45,7 +45,7 @@ Most importantly, these tools are generic - meaning that they are not designed f
 
 These tools can also be very useful, since they do find lots of potential issues. While running the tools doesn't take much time, each one of the potential problems takes time to investigate and verify. If the goal is to find and eliminate the most serious flaws as quickly as possible, consider whether your time is best spent with automated tools or with the techniques described in this guide. Still, these tools are certainly part of a well-balanced application security program. Used wisely, they can support your overall processes to produce more secure code.
 
-## Call to Action
+## 行动呼吁
 
 If you're building, designing or testing software, I strongly encourage you to get familiar with the security testing guidance in this document. It is a great road map for testing the most common issues that applications are facing today, but it is not exhaustive. If you find errors, please add a note to the discussion page or make the change yourself. You'll be helping thousands of others who use this guide.
 
