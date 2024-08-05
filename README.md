@@ -1,5 +1,20 @@
-# wstg-translations-zh
+# OWASP Web 安全测试指南
 
+- 项目源地址：[GitHub](https://github.com/OWASP/wstg/)
+
+[![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/OWASP/wstg/issues)
+[![OWASP Flagship](https://img.shields.io/badge/owasp-flagship-brightgreen.svg)](https://owasp.org/projects/)
+[![Twitter Follow](https://img.shields.io/twitter/follow/owasp_wstg?style=social)](https://twitter.com/owasp_wstg)
+
+[![Creative Commons License](https://licensebuttons.net/l/by-sa/4.0/88x31.png)](https://creativecommons.org/licenses/by-sa/4.0/ "CC BY-SA 4.0")
+
+欢迎访问开放式 Web 应用程序安全项目® 《(OWASP®) Web 安全测试指南》（WSTG）的官方资源库。WSTG 是测试网络应用程序和网络服务安全性的综合指南。WSTG 由安全专业人员和热心志愿者共同努力创建，为全球渗透测试人员和组织提供了最佳实践框架。
+
+官方目前正在开发 5.0 版本. 你可以在[GitHub](https://github.com/OWASP/wstg/tree/master/document)上阅读当前版本。
+
+官方最新发布的稳定版本, [check release 4.2](https://github.com/OWASP/wstg/releases/tag/v4.2)，也可以选择在线阅读 [online](https://owasp.org/www-project-web-security-testing-guide/v42/)。
+
+## 本仓库是对wstg项目的中文翻译，目前正在翻译中。
 
 # 目录
 
