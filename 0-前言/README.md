@@ -1,20 +1,20 @@
-# 前言（Eoin Keary）
+# 前言(Eoin Keary)
 
-The problem of insecure software is perhaps the most important technical challenge of our time. The dramatic rise of web applications enabling business, social networking etc has only compounded the requirements to establish a robust approach to writing and securing our Internet, Web Applications and Data.
+不安全的软件问题也许是我们这个时代最重要的技术挑战。网络应用程序在商业、社交网络等领域的迅速崛起，使得我们更有必要建立一个强大的方法来建立和保护我们的互联网、网络应用程序和数据。
 
-At the Open Web Application Security Project® (OWASP®), we're trying to make the world a place where insecure software is the anomaly, not the norm. The OWASP Testing Guide has an important role to play in solving this serious issue. It is vitally important that our approach to testing software for security issues is based on the principles of engineering and science. We need a consistent, repeatable and defined approach to testing web applications. A world without some minimal standards in terms of engineering and technology is a world in chaos.
+在开放式 Web 应用程序安全项目® (OWASP®) 中，我们正努力使不安全的软件成为少见现象，而不是常态现象。OWASP 测试指南在解决这一严重问题方面发挥着重要作用。我们测试软件安全问题的方法必须以工程和科学原则为基础，这一点至关重要。我们需要一种一致、可重复和明确的方法来测试网络应用程序。一个在工程和技术方面没有最低标准的世界是一个混乱的世界。
 
-It goes without saying that you can't build a secure application without performing security testing on it. Testing is part of a wider approach to build a secure system. Many software development organizations do not include security testing as part of their standard software development process. What is even worse is that many security vendors deliver testing with varying degrees of quality and rigor.
+不对应用程序进行安全测试，就无法构建安全的应用程序。测试是构建安全系统更广泛的方法的一部分。许多软件开发组织并没有将安全测试作为其标准软件开发流程的一部分。更糟糕的是，许多安全供应商提供的测试质量和严格程度参差不齐。
 
-Security testing, by itself, isn't a particularly good stand alone measure of how secure an application is, because there are an infinite number of ways that an attacker might be able to make an application break, and it simply isn't possible to test them all. We can't hack ourselves secure as we only have a limited time to test and defend where an attacker does not have such constraints.
+安全测试本身并不能单独衡量应用程序的安全程度，因为攻击者有无数种方法可以破解应用程序，而我们根本不可能对所有方法进行测试。我们无法确保自己的安全，因为我们只有有限的时间进行测试和防御，而攻击者却没有这样的限制。
 
-In conjunction with other OWASP projects such as the Code Review Guide, the Development Guide and tools such as [ZAP](https://www.zaproxy.org/), this is a great start towards building and maintaining secure applications. This Testing Guide will show you how to verify the security of your running application. I highly recommend using these guides as part of your application security initiatives.
+结合其他 OWASP 项目（如《代码审查指南》、《开发指南》和 [ZAP](https://www.zaproxy.org/) 等工具），这是构建和维护安全应用程序的良好开端。本测试指南将向您展示如何验证运行中应用程序的安全性。我强烈建议将这些指南作为应用程序安全计划的一部分。
 
-## 为什么 OWASP?
+## 为什么要编写 OWASP?
 
-Creating a guide like this is a huge undertaking, requiring the expertise of hundreds of people around the world. There are many different ways to test for security flaws and this guide captures the consensus of the leading experts on how to perform this testing quickly, accurately, and efficiently. OWASP gives like minded security folks the ability to work together and form a leading practice approach to a security problem.
+编写这样一份指南是一项艰巨的任务，需要全球数百人的专业知识。测试安全漏洞的方法有很多种，本指南汇集了顶尖专家关于如何快速、准确、高效地进行测试的共识。OWASP 让志同道合的安全人员能够携手合作，形成解决安全问题的领先方法。
 
-The importance of having this guide available in a completely free and open way is important for the foundation's mission. It gives anyone the ability to understand the techniques used to test for common security issues. Security should not be a black art or closed secret that only a few can practice. It should be open to all and not exclusive to security practitioners but also QA, Developers and Technical Managers. The project to build this guide keeps this expertise in the hands of the people who need it - you, me and anyone that is involved in building software.
+以完全免费和开放的方式提供本指南对于基金会的使命非常重要。它让任何人都能了解用于测试常见安全问题的技术。安全不应成为只有少数人才能掌握的黑科技或秘密。它应该向所有人开放，不仅限于安全从业人员，还包括质量保证、开发人员和技术经理。编写本指南的项目让需要这些专业知识的人比如你、我和任何参与构建软件的人都能掌握这些专业知识。
 
 This guide must make its way into the hands of developers and software testers. There are not nearly enough application security experts in the world to make any significant dent in the overall problem. The initial responsibility for application security must fall on the shoulders of the developers because they write the code. It shouldn't be a surprise that developers aren't producing secure code if they're not testing for it or consider the types of bugs which introduce vulnerability.
 
