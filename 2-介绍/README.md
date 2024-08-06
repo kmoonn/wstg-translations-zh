@@ -2,163 +2,163 @@
 
 ## OWASP 测试项目
 
-The OWASP Testing Project has been in development for many years. The aim of the project is to help people understand the *what*, *why*, *when*, *where*, and *how* of testing web applications. The project has delivered a complete testing framework, not merely a simple checklist or prescription of issues that should be addressed. Readers can use this framework as a template to build their own testing programs or to qualify other people’s processes. The Testing Guide describes in detail both the general testing framework and the techniques required to implement the framework in practice.
+OWASP 测试项目已发展多年。该项目的目的是帮助人们了解测试网络应用程序的*what*、*why*、*when*、*where*和*how*。该项目提供了一个完整的测试框架，而不仅仅是一个简单的检查清单或应处理问题的方法。读者可以将此框架作为模板，建立自己的测试程序，或对他人的程序进行鉴定。本测试指南详细介绍了一般测试框架和在实践中实施该框架所需的技术。
 
-Writing the Testing Guide has proven to be a difficult task. It was a challenge to obtain consensus and develop content that allowed people to apply the concepts described in the guide, while also enabling them to work in their own environment and culture. It was also a challenge to change the focus of web application testing from penetration testing to testing integrated in the software development lifecycle.
+事实证明，编写《测试指南》是一项艰巨的任务。既要达成共识，又要编写出既能让人们应用指南中所述概念，又能让他们在自己的环境和文化中开展工作的内容，这是一项挑战。将网络应用程序测试的重点从渗透测试转向软件开发生命周期中的综合测试也是一项挑战。
 
-However, the group is very satisfied with the results of the project. Many industry experts and security professionals, some of whom are responsible for software security at some of the largest companies in the world, are validating the testing framework. This framework helps organizations test their web applications in order to build reliable and secure software. The framework does not simply highlight areas of weakness, although that is certainly a by-product of many of the OWASP guides and checklists. As such, hard decisions had to be made about the appropriateness of certain testing techniques and technologies. The group fully understands that not everyone will agree with all of these decisions. However, OWASP is able to take the high ground and change culture over time through awareness and education, based on consensus and experience.
+不过，该小组对该项目的结果非常满意。许多行业专家和安全专业人士（其中一些人在全球最大的公司中负责软件安全）正在验证该测试框架。该框架可帮助企业测试其网络应用程序，从而构建可靠、安全的软件。该框架并不是简单地强调薄弱环节，尽管这肯定是许多 OWASP 指南和清单的副产品。因此，我们必须就某些测试技术的适当性做出艰难的决定。该小组完全理解，并非所有人都会同意所有这些决定。但是，OWASP 能够站在制高点上，在共识和经验的基础上，通过宣传和教育，逐渐改变文化。
 
-The rest of this guide is organized as follows: this introduction covers the pre-requisites of testing web applications and the scope of testing. It also covers the principles of successful testing and testing techniques, best practices for reporting, and business cases for security testing. Chapter 3 presents the OWASP Testing Framework and explains its techniques and tasks in relation to the various phases of the software development lifecycle. Chapter 4 covers how to test for specific vulnerabilities (e.g., SQL Injection) by code inspection and penetration testing.
+本指南的其余部分安排如下：介绍部分包括测试网络应用程序的前提条件和测试范围，还包括成功测试的原则和测试技术、报告的最佳实践以及安全测试的商业案例。第 3 章介绍 OWASP 测试框架，并结合软件开发生命周期的各个阶段解释其技术和任务。第 4 章介绍如何通过代码检查和渗透测试来测试特定漏洞（如 SQL 注入）。
 
 ### 安全性衡量：不安全软件的经济学原理
 
-A basic tenet of software engineering is summed up in a quote from [Controlling Software Projects: Management, Measurement, and Estimates](https://isbnsearch.org/isbn/9780131717114) by [Tom DeMarco](https://en.wikiquote.org/wiki/Tom_DeMarco):
+下面这段话概括了软件工程的基本原则 [控制软件项目： 管理、测量和估算](https://isbnsearch.org/isbn/9780131717114) by [Tom DeMarco](https://en.wikiquote.org/wiki/Tom_DeMarco):
 
-> You can't control what you can't measure.
+> 你无法控制你无法测量的东西。
 
-Security testing is no different. Unfortunately, measuring security is a notoriously difficult process.
+安全测试也不例外。不幸的是，衡量安全性是一个众所周知的困难过程。
 
-One aspect that should be emphasized is that security measurements are about both the specific technical issues (e.g., how prevalent a certain vulnerability is) and how these issues affect the economics of software. Most technical people will at least understand the basic issues, or they may have a deeper understanding of the vulnerabilities. Sadly, few are able to translate that technical knowledge into monetary terms and quantify the potential cost of vulnerabilities to the application owner's business. Until this happens, CIOs will not be able to develop an accurate return on security investment and, subsequently, assign appropriate budgets for software security.
+需要强调的一点是，安全测评既涉及具体的技术问题（如某个漏洞的普遍程度），也涉及这些问题如何影响软件的经济效益。大多数技术人员至少了解基本问题，或者他们可能对漏洞有更深入的了解。遗憾的是，很少有人能够将这些技术知识转化为经济问题，并量化漏洞对应用程序所有者业务的潜在成本。如果不能做到这一点，管理者们就无法获得准确的安全投资回报，也就无法为软件安全分配适当的预算。
 
-While estimating the cost of insecure software may appear a daunting task, there has been a significant amount of work in this direction. In 2020 the Consortium for IT Software Quality [summarized](https://www.it-cisq.org/the-cost-of-poor-software-quality-in-the-us-a-2020-report/):
+尽管估算不安全软件的成本似乎是一项艰巨的任务，但在这方面已经开展了大量工作。2020 年，IT 软件质量联盟[摘要](https://www.it-cisq.org/the-cost-of-poor-software-quality-in-the-us-a-2020-report/)：
 
-> ...the cost of poor quality software in the US in 2018 is approximately $2.84 trillion...
+> ......2018年美国劣质软件的成本约为2.84万亿美元...
 
-The framework described in this document encourages people to measure security throughout the entire development process. They can then relate the cost of insecure software to the impact it has on the business, and consequently develop appropriate business processes, and assign resources to manage the risk. Remember that measuring and testing web applications is even more critical than for other software, since web applications are exposed to millions of users through the internet.
+本文档中描述的框架鼓励人们在整个开发过程中衡量安全性。这样，人们就可以将不安全软件的成本与其对业务的影响联系起来，从而制定适当的业务流程，并分配资源来管理风险。请记住，测量和测试网络应用程序比测量和测试其他软件更为重要，因为网络应用程序会通过互联网暴露给数百万用户。
 
 ### 什么是测试?
 
-Many things need to be tested during the development lifecycle of a web application, but what does testing actually mean? The Oxford Dictionary of English defines "test" as:
+在网络应用程序的开发生命周期中，许多事情都需要进行测试，但测试究竟意味着什么呢？牛津英语词典》将 "测试 "定义为：
 
-> **test** (noun): a procedure intended to establish the quality, performance, or reliability of something, especially before it is taken into widespread use.
+> **测试**（名词）：旨在确定某物的质量、性能或可靠性的程序，尤其是在其被广泛使用之前。
 
-For the purposes of this document, testing is a process of comparing the state of a system or application against a set of criteria. In the security industry, people frequently test against a set of mental criteria that are neither well defined nor complete. As a result of this, many outsiders regard security testing as a black art. The aim of this document is to change that perception, and to make it easier for people without in-depth security knowledge to make a difference in testing.
+在本文中，测试是将系统或应用程序的状态与一系列标准进行比较的过程。在安全行业，人们经常根据一套既不明确也不完整的心理标准进行测试。因此，许多局外人认为安全测试是一门黑色艺术。本文档旨在改变这种看法，让没有深入安全知识的人更容易在测试中有所作为。
 
-### Why Perform Testing?
+### 为什么要进行测试？
 
-This document is designed to help organizations understand what comprises a testing program, and to help them identify the steps that need to be undertaken to build and operate a modern web application testing program. The guide gives a broad view of the elements required to make a comprehensive web application security program. This guide can be used as a reference and as a methodology to help determine the gap between existing practices and industry best practices. This guide allows organizations to compare themselves against industry peers, to understand the magnitude of resources required to test and maintain software, or to prepare for an audit. This chapter does not go into the technical details of how to test an application, as the intent is to provide a typical security organizational framework. The technical details about how to test an application, as part of a penetration test or code review, will be covered in the remaining parts of this document.
+本指南旨在帮助企业了解测试计划的组成，并帮助他们确定建立和运行现代网络应用程序测试计划所需的步骤。本指南概括了制定全面网络应用程序安全计划所需的要素。本指南可用作参考和方法论，帮助确定现有实践与行业最佳实践之间的差距。通过本指南，企业可以与业内同行进行比较，了解测试和维护软件所需的资源规模，或为审计做好准备。本章不涉及如何测试应用程序的技术细节，因为本章旨在提供一个典型的安全组织框架。关于如何测试应用程序的技术细节，作为渗透测试或代码审查的一部分，将在本文档的其余部分中阐述。
 
-### When to Test?
+### 什么时候开展测试？
 
-Most people today don’t test software until it has already been created and is in the deployment phase of its lifecycle (i.e., code has been created and instantiated into a working web application). This is generally a very ineffective and cost-prohibitive practice. One of the best methods to prevent security bugs from appearing in production applications is to improve the Software Development lifecycle (SDLC) by including security in each of its phases. An SDLC is a structure imposed on the development of software artifacts. If an SDLC is not currently being used in your environment, it is time to pick one! The following figure shows a generic SDLC model as well as the (estimated) increasing cost of fixing security bugs in such a model.
+如今，大多数人在软件已经创建并进入其生命周期的部署阶段（即代码已经创建并实例化为可运行的网络应用程序）之前，都不会对软件进行测试。这通常是一种非常无效且成本高昂的做法。防止安全漏洞出现在生产应用程序中的最佳方法之一是改进**软件开发生命周期（SDLC）**，将安全性纳入其每个阶段。SDLC 是强加给软件工件开发的一种结构。如果您的环境中目前没有使用 SDLC，那么现在就应该选择一种！下图显示了一个通用的 SDLC 模型，以及在此模型中修复安全漏洞的（估计）增加成本。
 
 ![Generic SDLC Model](images/SDLC.jpg)\
-*Figure 2-1: Generic SDLC Model*
+*图 2-1: 通用 SDLC 模型*
 
-Companies should inspect their overall SDLC to ensure that security is an integral part of the development process. SDLCs should include security tests to ensure security is adequately covered and controls are effective throughout the development process.
+公司应检查其整体的 SDLC，以确保安全是开发过程中不可分割的一部分。SDLC 应包括安全测试，以确保在整个开发过程中充分考虑到安全问题，并采取有效的控制措施。
 
-### What to Test?
+### 测试什么？
 
-It can be helpful to think of software development as a combination of people, process, and technology. If these are the factors that "create" software, then it is logical that these are the factors that must be tested. Today most people generally test the technology or the software itself.
+将软件开发视为人员、流程和技术的结合可能会有所帮助。如果这些都是 "创造 "软件的因素，那么顺理成章的是，这些都是必须进行测试的因素。如今，大多数人通常会对技术或软件本身进行测试。
 
-An effective testing program should have components that test the following:
+有效的测试程序应包含以下测试组件：
 
-- **People** – to ensure that there is adequate education and awareness;
-- **Process** – to ensure that there are adequate policies and standards and that people know how to follow these policies;
-- **Technology** – to ensure that the process has been effective in its implementation.
+- **人员** – 确保开展充分的教育和宣传活动；
+- **流程** – 确保有适当的政策和标准，并确保人们知道如何遵守这些政策；
+- **技术** – 确保该流程得到有效实施。
 
-Unless a holistic approach is adopted, testing just the technical implementation of an application will not uncover management or operational vulnerabilities that could be present. By testing the people, policies, and processes, an organization can catch issues that would later manifest themselves into defects in the technology, thus eradicating bugs early and identifying the root causes of defects. Likewise, testing only some of the technical issues that can be present in a system will result in an incomplete and inaccurate security posture assessment.
+除非采用整体方法，否则仅对应用程序的技术实施进行测试将无法发现可能存在的管理或操作漏洞。通过对人员、政策和流程进行测试，企业可以捕捉到日后会表现为技术缺陷的问题，从而及早消除错误并找出缺陷的根本原因。同样，如果只测试系统中可能存在的部分技术问题，则会导致不完整、不准确的安全态势评估。
 
-Denis Verdon, Head of Information Security at [Fidelity National Financial](https://www.fnf.com), presented an excellent analogy for this misconception at the OWASP AppSec 2004 Conference in New York:
+在纽约举行的 OWASP AppSec 2004 会议上，[富达国家金融公司](https://www.fnf.com) 信息安全主管 Denis Verdon 对这种误解作了一个很好的比喻：
 
-> If cars were built like applications ... safety tests would assume frontal impact only. Cars would not be roll tested, or tested for stability in emergency maneuvers, brake effectiveness, side impact, and resistance to theft.
+> 如果汽车的制造像软件应用一样......安全测试将只假设正面碰撞。汽车将不会进行翻滚测试，也不会进行紧急机动稳定性、制动有效性、侧面碰撞和防盗测试。
 
-### How to Reference WSTG Scenarios
+### 如何引用 WSTG 方案
 
-Each scenario has an identifier in the format `WSTG-<category>-<number>`, where: 'category' is a 4 character upper case string that identifies the type of test or weakness, and 'number' is a zero-padded numeric value from 01 to 99. For example:`WSTG-INFO-02` is the second Information Gathering test.
+每个方案都有一个格式为 "WSTG-<类别>-<编号>"的标识符，其中 例如："WSTG-INFO-02 "是第二个信息收集测试部分。
 
-The identifiers may change between versions therefore it is preferable that other documents, reports, or tools use the format: `WSTG-<version>-<category>-<number>`, where: 'version' is the version tag with punctuation removed. For example: `WSTG-v42-INFO-02` would be understood to mean specifically the second Information Gathering test from version 4.2.
+不同版本之间的标识符可能会发生变化，因此其他文件、报告或工具最好使用该格式： WSTG-<版本>-<类别>-<编号>"，其中： 版本 "是去掉标点符号的版本标记。例如："WSTG-v42-INFO-02 "应理解为特指 4.2 版中的第二个信息收集测试部分。
 
-If identifiers are used without including the `<version>` element then they should be assumed to refer to the latest Web Security Testing Guide content. Obviously as the guide grows and changes this becomes problematic, which is why writers or developers should include the version element.
+如果使用标识符而不包含 `<version>` 元素，则应假定这些标识符指的是《网络安全测试指南》的最新内容。显然，随着指南的发展和变化，这将成为一个问题，这就是作者或开发人员应包含版本元素的原因。
 
-#### Linking
+#### 链接
 
-Linking to Web Security Testing Guide scenarios should be done using versioned links not `stable` or `latest` which will definitely change with time. However, it is the project team's intention that versioned links not change. For example: `https://owasp.org/www-project-web-security-testing-guide/v42/4-Web_Application_Security_Testing/01-Information_Gathering/02-Fingerprint_Web_Server`. Note: the `v42` element refers to version 4.2.
+链接到《网络安全测试指南》方案时应使用版本链接，而不是 "稳定 "或 "最新 "链接，因为它们肯定会随着时间的推移而改变。然而，项目团队的意图是版本链接不会改变。例如：`https://owasp.org/www-project-web-security-testing-guide/v42/4-Web_Application_Security_Testing/01-Information_Gathering/02-Fingerprint_Web_Server`。注意：`v42` 元素指的是版本 4.2。
 
-### Feedback and Comments
+### 反馈和意见
 
-As with all OWASP projects, we welcome comments and feedback. We especially like to know that our work is being used and that it is effective and accurate.
+同所有 OWASP 项目一样，我们欢迎评论和反馈。我们尤其希望知道我们的工作得到了应用，并且是有效和准确的。
 
 ## 测试原理
 
-There are some common misconceptions when developing a testing methodology to find security bugs in software. This chapter covers some of the basic principles that professionals should take into account when performing security tests on software.
+在制定查找软件安全漏洞的测试方法时，有一些常见的误解。本章将介绍专业人员在对软件进行安全测试时应考虑的一些基本原则。
 
-### There is No Silver Bullet
+### 世界上没有灵丹妙药
 
-While it is tempting to think that a security scanner or application firewall will provide many defenses against attack or identify a multitude of problems, in reality there is no silver bullet to the problem of insecure software. Application security assessment software, while useful as a first pass to find low-hanging fruit, is generally immature and ineffective at in-depth assessment or providing adequate test coverage. Remember that security is a process and not a product.
+虽然人们很容易认为安全扫描仪或应用程序防火墙可以提供许多防御攻击的功能或发现许多问题，但实际上，并没有解决不安全软件问题的灵丹妙药。应用程序安全评估软件虽然可以作为第一道关卡，找到低挂果实，但一般都不成熟，在深入评估或提供足够的测试覆盖面方面效果不佳。请记住，安全是一个过程，而不是产品。
 
-### Think Strategically, Not Tactically
+### 战略思维，而非战术思维
 
-Security professionals have come to realize the fallacy of the patch-and-penetrate model that was pervasive in information security during the 1990’s. The patch-and-penetrate model involves fixing a reported bug, but without proper investigation of the root cause. This model is usually associated with the window of vulnerability, also referred to as window of exposure, shown in the figure below. The evolution of vulnerabilities in common software used worldwide has shown the ineffectiveness of this model. For more information about windows of exposure, see [Schneier on Security](https://www.schneier.com/crypto-gram/archives/2000/0915.html).
+安全专业人员已经意识到上世纪 90 年代在信息安全领域盛行的 "打补丁-穿墙 "模式的谬误。打补丁-穿墙模式是指修复已报告的漏洞，但不对其根本原因进行适当调查。这种模式通常与漏洞窗口（也称暴露窗口）相关联，如下图所示。全球常用软件中漏洞的演变表明，这种模式是无效的。有关暴露窗口的更多信息，请参阅 [Schneier on Security](https://www.schneier.com/crypto-gram/archives/2000/0915.html)。
 
-Vulnerability studies such as [Symantec's Security Threat Report](https://www.symantec.com/security-center/threat-report) have shown that with the reaction time of attackers worldwide, the typical window of vulnerability does not provide enough time for patch installation, since the time between a vulnerability being uncovered and an automated attack against it being developed and released is decreasing every year.
+例如 [Symantec's 安全威胁报告](https://www.symantec.com/security-center/threat-report)等漏洞研究表明，随着全球攻击者反应速度的加快，典型的漏洞窗口并不能为补丁安装提供足够的时间，因为从漏洞被发现到针对该漏洞的自动攻击被开发和发布的时间正在逐年缩短。
 
-There are several incorrect assumptions in the patch-and-penetrate model. Many users believe that patches interfere with normal operations or might break existing applications. It is also incorrect to assume that all users are aware of newly released patches. Consequently not all users of a product will apply patches, either because they think patching may interfere with how the software works, or because they lack knowledge about the existence of the patch.
+补丁和穿墙模式中有几个不正确的假设。许多用户认为，补丁程序会干扰正常操作或破坏现有应用程序。假设所有用户都知道新发布的补丁也是不正确的。因此，并非产品的所有用户都会打补丁，因为他们认为打补丁可能会干扰软件的运行，或者因为他们不知道补丁的存在。
 
 ![Window of Vulnerability](images/WindowExposure.png)\
-*Figure 2-2: Window of Vulnerability*
+*图 2-2: 漏洞窗口*
 
-It is essential to build security into the Software Development Lifecycle (SDLC) to prevent reoccurring security problems within an application. Developers can build security into the SDLC by developing standards, policies, and guidelines that fit and work within the development methodology. Threat modeling and other techniques should be used to help assign appropriate resources to those parts of a system that are most at risk.
+在软件开发生命周期（SDLC）中建立安全机制对防止应用程序中再次出现安全问题至关重要。开发人员可以通过制定适合开发方法并在开发方法中发挥作用的标准、策略和指南，将安全性纳入 SDLC。应使用威胁建模和其他技术，帮助为系统中风险最大的部分分配适当的资源。
 
-### The SDLC is King
+### SDLC 才是王道
 
-The SDLC is a process that is well-known to developers. By integrating security into each phase of the SDLC, it allows for a holistic approach to application security that leverages the procedures already in place within the organization. Be aware that while the names of the various phases may change depending on the SDLC model used by an organization, each conceptual phase of the archetype SDLC will be used to develop the application (i.e., define, design, develop, deploy, maintain). Each phase has security considerations that should become part of the existing process, to ensure a cost-effective and comprehensive security program.
+SDLC 是开发人员众所周知的流程。通过将安全集成到 SDLC 的每个阶段，可以利用组织内已有的程序，采用整体方法来实现应用程序安全。请注意，虽然各阶段的名称可能会根据组织使用的 SDLC 模型而改变，但原型 SDLC 的每个概念阶段都将用于开发应用程序（即定义、设计、开发、部署、维护）。每个阶段都有安全考虑因素，这些因素应成为现有流程的一部分，以确保具有成本效益的全面安全计划。
 
-There are several secure SDLC frameworks in existence that provide both descriptive and prescriptive advice. Whether a person takes descriptive or prescriptive advice depends on the maturity of the SDLC process. Essentially, prescriptive advice shows how the secure SDLC should work, and descriptive advice shows how it is used in the real world. Both have their place. For example, if you don't know where to start, a prescriptive framework can provide a menu of potential security controls that can be applied within the SDLC. Descriptive advice can then help drive the decision process by presenting what has worked well for other organizations. Descriptive secure SDLCs include BSIMM; and the prescriptive secure SDLCs include OWASP's [Open Software Assurance Maturity Model](https://www.opensamm.org/) (OpenSAMM), and [ISO/IEC 27034](https://www.iso27001security.com/html/27034.html) Parts 1-7, all published (except part 4).
+目前有几种安全的 SDLC 框架，它们既提供描述性建议，也提供规范性建议。是采纳描述性建议还是规范性建议，取决于 SDLC 流程的成熟度。从本质上讲，规范性建议说明了安全 SDLC 应该如何工作，而描述性建议则说明了它在现实世界中是如何使用的。两者都有其用武之地。例如，如果您不知道从何入手，规范性框架可以提供一个可应用于 SDLC 的潜在安全控制菜单。然后，描述性建议可以通过介绍对其他组织行之有效的方法来帮助推动决策过程。描述性安全 SDLC 包括 BSIMM；规范性安全 SDLC 包括 OWASP 的[开放软件保证成熟度模型](https://www.opensamm.org/) (OpenSAMM) 和[ISO/IEC 27034](https://www.iso27001security.com/html/27034.html)第 1-7 部分，均已发布（第 4 部分除外）。
 
-### Test Early and Test Often
+### 早测试、勤测试
 
-When a bug is detected early within the SDLC it can be addressed faster and at a lower cost. A security bug is no different from a functional or performance-based bug in this regard. A key step in making this possible is to educate the development and QA teams about common security issues and the ways to detect and prevent them. Although new libraries, tools, or languages can help design programs with fewer security bugs, new threats arise constantly and developers must be aware of the threats that affect the software they are developing. Education in security testing also helps developers acquire the appropriate mindset to test an application from an attacker's perspective. This allows each organization to consider security issues as part of their existing responsibilities.
+如果能在 SDLC 的早期阶段发现漏洞，就能以更快的速度和更低的成本解决漏洞。在这方面，安全漏洞与功能性或基于性能的漏洞并无不同。要做到这一点，关键的一步是让开发和质量保证团队了解常见的安全问题以及检测和预防这些问题的方法。虽然新的库、工具或语言可以帮助设计出安全漏洞较少的程序，但新的威胁也会不断出现，开发人员必须了解影响他们正在开发的软件的威胁。安全测试教育还有助于开发人员获得从攻击者角度测试应用程序的适当思维方式。这使每个组织都能将安全问题视为其现有职责的一部分。
 
-### Test Automation
+### 测试自动化
 
-In modern development methodologies such as (but not limited to): agile, devops/devsecops, or rapid application development (RAD) consideration should be put into integrating security tests in to continuous integration/continuous deployment (CI/CD) workflows in order to maintain baseline security information/analysis and identify "low hanging fruit" type weaknesses. This can be done by leveraging dynamic application security testing (DAST), static application security testing (SAST), and software composition analysis (SCA) or dependency tracking tools during standard automated release workflows or on a regularly scheduled basis.
+现代开发方法中，包括（但不限于）: 敏捷、开发项目/开发安全操作或快速应用程序开发 (RAD) 应考虑将安全测试集成到持续集成/持续部署 (CI/CD) 工作流程中，以维护基线安全信息/分析，并识别 "低挂果实 "类型的弱点。要做到这一点，可以在标准的自动发布工作流程中或定期计划的基础上，利用动态应用安全测试（DAST）、静态应用安全测试（SAST）和软件组成分析（SCA）或依赖性跟踪工具。
 
-### Understand the Scope of Security
+### 理解安全范围
 
-It is important to know how much security a given project will require. The assets that are to be protected should be given a classification that states how they are to be handled (e.g., confidential, secret, top secret). Discussions should occur with legal counsel to ensure that any specific security requirements will be met. In the USA, requirements might come from federal regulations, such as the [Gramm-Leach-Bliley Act](https://www.ftc.gov/business-guidance/privacy-security/gramm-leach-bliley-act), or from state laws, such as the [California SB-1386](https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=200120020SB1386). For organizations based in EU countries, both country-specific regulation and EU Directives may apply. For example, [Directive 96/46/EC4](https://ec.europa.eu/info/policies/justice-and-fundamental-rights_en) and [Regulation (EU) 2016/679 (General Data Protection Regulation)](https://gdpr-info.eu/) make it mandatory to treat personal data in applications with due care, whatever the application. Non-EU organizations, under certain circumstances, may also be required to comply with the General Data Protection Regulation.
+了解特定项目需要多少安全性非常重要。应将需要保护的资产分类，说明如何处理这些资产（如机密、秘密、绝密）。应与法律顾问进行讨论，以确保满足任何特定的安全要求。在美国，要求可能来自联邦法规，如[Gramm-Leach-Bliley 法案](https://www.ftc.gov/business-guidance/privacy-security/gramm-leach-bliley-act)，也可能来自州法律，如[California SB-1386](https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=200120020SB1386)。对于总部设在欧盟国家的组织，特定国家的法规和欧盟指令都可能适用。例如，[指令 96/46/EC4](https://ec.europa.eu/info/policies/justice-and-fundamental-rights_en)和[条例 (EU) 2016/679（《通用数据保护条例》）](https://gdpr-info.eu/)规定，无论何种应用，都必须谨慎处理应用中的个人数据。在某些情况下，非欧盟组织也必须遵守《一般数据保护条例》。
 
-### Develop the Right Mindset
+### 树立正确的心态
 
-Successfully testing an application for security vulnerabilities requires thinking "outside of the box." Normal use cases will test the normal behavior of the application when a user is using it in the manner that is expected. Good security testing requires going beyond what is expected and thinking like an attacker who is trying to break the application. Creative thinking can help to determine what unexpected data may cause an application to fail in an insecure manner. It can also help find any assumptions made by web developers that are not always true, and how those assumptions can be subverted. One reason that automated tools do a poor job of testing for vulnerabilities is that automated tools do not think creatively. Creative thinking must be done on a case-by-case basis, as most web applications are being developed in a unique way (even when using common frameworks).
+成功测试应用程序的安全漏洞需要 "跳出条条框框"。正常用例将测试用户按照预期方式使用应用程序时的正常行为。良好的安全测试需要超越预期，像攻击者一样思考，试图破解应用程序。创造性思维有助于确定哪些意外数据可能导致应用程序以不安全的方式失效。创造性思维还有助于发现网络开发人员所做的并非总是正确的假设，以及如何颠覆这些假设。自动化工具在漏洞测试方面表现不佳的一个原因是，自动化工具不具备创造性思维。创造性思维必须根据具体情况进行，因为大多数网络应用程序都是以独特的方式开发的（即使使用的是通用框架）。
 
-### Understand the Subject
+### 认清目标
 
-One of the first major initiatives in any good security program should be to require accurate documentation of the application. The architecture, data-flow diagrams, use cases, etc. should be recorded in formal documents and made available for review. The technical specification and application documents should include information that lists not only the desired use cases, but also any specifically disallowed use cases. Finally, it is good to have at least a basic security infrastructure that allows the monitoring and trending of attacks against an organization's applications and network (e.g., intrusion detection systems).
+在任何良好的安全计划中，首先要做的一件大事就是要求准确记录应用程序。架构、数据流图、用例等都应记录在正式文档中，并提供审查。技术规范和应用程序文档不仅应包括列出所需用例的信息，还应包括任何明确禁止的用例。最后，最好至少有一个基本的安全基础架构，可以监控针对组织应用程序和网络的攻击并显示攻击趋势（如入侵检测系统）。
 
-### Use the Right Tools
+### 使用正确的工具
 
-While we have already stated that there is no silver bullet tool, tools do play a critical role in the overall security program. There is a range of Open Source and commercial tools that can automate many routine security tasks. These tools can simplify and speed up the security process by assisting security personnel in their tasks. However, it is important to understand exactly what these tools can and cannot do so that they are not oversold or used incorrectly.
+虽然我们已经说过没有灵丹妙药，但工具在整个安全计划中确实起着至关重要的作用。有一系列开源和商业工具可以自动执行许多常规安全任务。这些工具可以协助安全人员完成任务，从而简化和加快安全流程。不过，重要的是要准确了解这些工具能做什么和不能做什么，以免过度推销或使用不当。
 
-### The Devil is in the Details
+### 细节决定成败
 
-It is critical not to perform a superficial security review of an application and consider it complete. This will instill a false sense of confidence that can be as dangerous as not having done a security review in the first place. It is vital to carefully review the findings and weed out any false positives that may remain in the report. Reporting an incorrect security finding can often undermine the valid message of the rest of a security report. Care should be taken to verify that every possible section of application logic has been tested, and that every use case scenario was explored for possible vulnerabilities.
+重要的是，不要只对应用程序进行表面的安全审查就认为已经完成。这将灌输一种虚假的信任感，其危险程度不亚于一开始就没有进行安全审查。必须仔细审查审查结果，剔除报告中可能存在的任何误报。报告错误的安全发现往往会破坏安全报告其他部分的有效信息。应注意核实应用程序逻辑的每个可能部分都已测试，每个用例场景都已探查过可能存在的漏洞。
 
-### Use Source Code When Available
+### 使用源代码
 
-While black-box penetration test results can be impressive and useful to demonstrate how vulnerabilities are exposed in a production environment, they are not the most effective or efficient way to secure an application. It is difficult for dynamic testing to test the entire codebase, particularly if many nested conditional statements exist. If the source code for the application is available, it should be given to the security staff to assist them while performing their review. It is possible to discover vulnerabilities within the application source that would be missed during a black-box engagement.
+虽然黑盒渗透测试的结果可以给人留下深刻印象，并有助于展示在生产环境中漏洞是如何暴露的，但它们并不是确保应用程序安全的最有效或最高效的方法。动态测试很难测试整个代码库，尤其是在存在许多嵌套条件语句的情况下。如果有应用程序的源代码，则应将其提供给安全人员，以协助他们进行审查。这样就有可能在应用程序源代码中发现在黑盒测试中遗漏的漏洞。
 
-### Disable Compensating Controls for Testers
+### 禁用测试仪的补偿控件
 
-Testing traffic should be allowed through compensating controls such as a Web Application Firewall (WAF). While a WAF can block many attacks on an application, a sophisticated attacker can bypass the control and exploit the vulnerable underlying application with enough time and dedication. Like providing source code access, turning off the compensating control enables the security staff to dedicate all their focus to the application logic. A white-box penetration test aims to find security vulnerabilities in the product itself, not the systems that proxy traffic to the production environment.
+应通过网络应用防火墙（WAF）等补偿控制措施允许测试流量。虽然 WAF 可以阻止许多针对应用程序的攻击，但只要有足够的时间和精力，老练的攻击者也可以绕过控制，利用脆弱的底层应用程序。与提供源代码访问权限一样，关闭补偿控制可使安全人员将所有精力集中在应用程序逻辑上。白盒渗透测试旨在发现产品本身的安全漏洞，而不是代理生产环境流量的系统。
 
-### Develop Metrics
+### 制定衡量标准
 
-An important part of a good security program is the ability to determine if things are getting better. It is important to track the results of testing engagements, and develop metrics that will reveal the application security trends within the organization.
+良好安全计划的一个重要组成部分是确定情况是否正在好转的能力。重要的是要跟踪测试工作的结果，并制定能揭示组织内应用程序安全趋势的指标。
 
-Good metrics will show:
+良好的标注如下：:
 
-- If more education and training are required;
-- If there is a particular security mechanism that is not clearly understood by the development team;
-- If the total number of security related problems being found is decreasing.
+- 是否需要更多的教程和培训；
+- 是否存在开发团队对某种特定的安全机制不了解；
+- 是否发现的与安全有关的问题总数正在减少。
 
-Consistent metrics that can be generated in an automated way from available source code will also help the organization in assessing the effectiveness of mechanisms introduced to reduce security bugs in software development. Metrics are not easily developed, so using a standard such as the one provided by the [IEEE](https://ieeexplore.ieee.org/document/237006) is a good starting point.
+可从现有源代码中自动生成的一致度量标准也有助于组织评估为减少软件开发中的安全漏洞而引入的机制的有效性。度量标准的制定并不容易，因此使用诸如 [IEEE](https://ieeexplore.ieee.org/document/237006) 提供的标准是一个很好的起点。
 
-### Document the Test Results
+### 记录测试结果
 
-To conclude the testing process, it is important to produce a formal record of what testing actions were taken, by whom, when they were performed, and details of the test findings. It is wise to agree on an acceptable format for the report that is useful to all concerned parties, which may include developers, project management, business owners, IT department, audit, and compliance.
+要结束测试过程，必须编制一份正式记录，说明采取了哪些测试行动、由谁执行、何时执行以及测试结果的详情。明智的做法是商定一个可接受的报告格式，以便对所有相关方都有用，其中可能包括开发人员、项目管理人员、业务所有者、信息技术部门、审计和合规人员。
 
-The report should clearly identify to the business owner where material risks exist, and do so in a manner sufficient to get their backing for subsequent mitigation actions. The report should also be clear to the developer in pin-pointing the exact function that is affected by the vulnerability and associated recommendations for resolving issues in a language that the developer will understand. The report should also allow another security tester to reproduce the results. Writing the report should not be overly burdensome on the security tester themselves. Security testers are not generally renowned for their creative writing skills, and agreeing on a complex report can lead to instances where test results are not properly documented. Using a security test report template can save time and ensure that results are documented accurately and consistently, and are in a format that is suitable for the audience.
+这份报告应向业务所有者明确指出存在的重大风险，并以足够的方式让他们支持后续的缓解行 动。报告还应向开发人员明确指出受漏洞影响的具体功能，并以开发人员能够理解的语言提出解决问题的相关建议。报告还应允许其他安全测试人员重现结果。撰写报告不应给安全测试人员本身造成过重的负担。安全测试人员通常并不以创造性的写作技巧而闻名，就复杂的报告达成一致意见可能会导致测试结果未被正确记录的情况。使用安全测试报告模板可以节省时间，确保结果记录准确、一致，格式适合受众。
 
 ## 测试技术说明
 
