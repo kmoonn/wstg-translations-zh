@@ -10,8 +10,8 @@
 
 ## 目前进度：
 - [x] -1 项目介绍、目录
-- [ ] 0 前言
-- [ ] 1 序言
+- [x] 0 前言
+- [x] 1 序言
 - [ ] 2 介绍
 
 [![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/OWASP/wstg/issues)
