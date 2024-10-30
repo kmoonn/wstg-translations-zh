@@ -2,6 +2,18 @@
 
 - 项目源地址：[GitHub](https://github.com/OWASP/wstg/)
 
+## 背景
+
+因为该项目截至到今天还没有中文译文版，不便国内安全er更好地了解与学习 OWASP Web 安全测试指南。
+
+因此，我决定开始将其翻译成中文，目前正在进行中文翻译工作，希望更多的小伙伴加入进来！！
+
+## 目前进度：
+- [x] -1 项目介绍、目录
+- [ ] 0 前言
+- [ ] 1 序言
+- [ ] 2 介绍
+
 [![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/OWASP/wstg/issues)
 [![OWASP Flagship](https://img.shields.io/badge/owasp-flagship-brightgreen.svg)](https://owasp.org/projects/)
 [![Twitter Follow](https://img.shields.io/twitter/follow/owasp_wstg?style=social)](https://twitter.com/owasp_wstg)
